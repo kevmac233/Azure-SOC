@@ -60,13 +60,22 @@ Remoted back onto the non-attacker VM and verified the successful login from the
 
 ## Creating a Linux VM
 
-Created a third virtual machine running Ubuntu Linux and created a rule to allow any inbound traffic:
+Created a third virtual machine running Ubuntu Linux and created a rule to allow any inbound traffic. Similar to the Windows VM with SQL Server, allowing all traffic will make this VM vulnerable:
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/4dab131e-c371-4e29-b2d1-7a47d1037923)
 
+## Creating Users in Azure Active Directory
+
+In this section, I created users in Azure Active Directory and assigned a role to one of the users:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/6b2a4cce-50bd-4c56-b7ca-dd517546f909)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/708e1d2f-47d6-4eb9-857e-809482ca1dfe)
+
+
 ## Creating a Log Analytics Workspace
 
-At this part of the project, I created a Log Analytics Workspace which will act as the log aggregator:
+At this part of the project, I created a Log Analytics Workspace which will act as the log aggregator in Azure:
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/9f993ab6-27de-407d-ba8b-28fcdce37b44)
 
@@ -74,6 +83,25 @@ Enabled Microsoft Defender for Cloud plans for Log Analytics Workspace, and conf
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/777ddf07-4653-4bed-8b7d-4572660e3237)
 
+## Configuring and Utilizing Microsoft Sentinel (SIEM)
+
+Microsoft Sentinel is a tool in Azure that acts as a Security Information and Event Management (SIEM). This is where all the security alerts will generate, which prioritizes from high to low alerts. It allows you to investigate those alerts as well. Here, I manually created a "Brute Force Attempt" alert rule in Sentinel's Active Rules to test against both the Windows VM and Linux VM:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/4e4dcd87-91ba-4c28-a2bf-5796d2798b01)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/87247b20-4fe2-4f33-bc52-6ec1552d1235)
+
+## Simulating an attack on Azure Active Directory
+
+This part of the project is where I simulated a brute force attack on both vulnerable VMs. To perform the attack, I remoted back into the Attacker VM and opened Powershell ISE. I ran a premade script that performs a brute force attack by failing to login 11 times and then completes with a successful login attempt:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/6fbd01da-16d6-4064-8a36-f3641cef897a)
+
+This attack was logged and can be observed in Log Analytics Workspace and Microsoft Sentinel:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/8ad4e1dd-5252-46d1-a0ac-4b99c30855dd)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/c8bd3445-29a3-436a-ae8f-a5b1d646a000)
 
 
 ## Architecture After Hardening / Security Controls
