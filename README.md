@@ -93,16 +93,59 @@ Microsoft Sentinel is a tool in Azure that acts as a Security Information and Ev
 
 ## Simulating an attack on Azure Active Directory
 
-This part of the project is where I simulated a brute force attack on both vulnerable VMs. To perform the attack, I remoted back into the Attacker VM and opened Powershell ISE. I ran a premade script that performs a brute force attack by failing to login 11 times and then completes with a successful login attempt:
+This is where I began my attack simulations, and I started with an Azure AD brute force attack. To perform the attack, I remoted back into the Attacker VM and opened Powershell ISE. I ran a premade script that performs a brute force attack by failing to login 11 times and then completes with a successful login attempt:
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/6fbd01da-16d6-4064-8a36-f3641cef897a)
 
-This attack was logged and can be observed in Log Analytics Workspace and Microsoft Sentinel:
+This attack was logged and can be observed in Log Analytics Workspace and Microsoft Sentinel. In this case, I assigned the alert to myself to simulate as if I was an analyst investigating the alert:
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/8ad4e1dd-5252-46d1-a0ac-4b99c30855dd)
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/c8bd3445-29a3-436a-ae8f-a5b1d646a000)
 
+## Simulating an attack on Windows VM and Linux VM
+
+In this simulation, I conducted a brute force attack from the Attacker VM on both vulnerable VMs. Here, I ran a premade script in Visual Studio Code that attempts to log into the SQL Server of my Windows VM. This generated an alert in Microsoft Sentinel, which I assigned to myself to simulate Incident Response:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/4e45c0c2-f306-4431-864b-95448c0445e3)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/b313ffe1-fc63-44f6-a37d-31c6923c6929)
+
+Here, I conducted a brute force attack against my Linux VM using Powershell from my local desktop. This generated a security alert in Microsoft Sentinel:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/3f78c214-94fc-463d-b178-4bd505c27307)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/ff5eebe9-1bf4-4e20-a8e2-afdf6e8c211a)
+
+Another attack I performed malware breakout against my Windows VM. I conducted this by running a premade Powershell script to generate EICAR.txt files. EICAR.txt files do not contain real viruses, but they are designed to help test and check whether your antivirus software is working properly:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/490ee5ef-f4b0-4fef-80ff-e963fb0f5237)
+
+Here is the incident alert generated in Microsoft Sentinel from the malware attack:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/4462bb0b-cdd9-4c55-9e4f-461dce70bd6b)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/d1e7eced-e49d-408a-8088-14212af68b7e)
+
+## Investigation/Incident Response
+
+After conducting those attacks, I simulated an incident response in compliance with NIST 800-61 to get more detailed information on the attacks. In Microsoft Sentinel, there is a feature called Incidents which allows you to see a visual representation of the attack:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/a8022ef4-9c4d-45e3-9d56-748c2cf39c7e)
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/59a15ee5-027c-4c93-a34c-5894be85747d)
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/3c6d213a-81fa-457f-b5f1-b5f57ab0a279)
+
+In Log Analytics Workspace, I ran a KQL (Kusto Query Language) query to grab Malware Detection logs to further investigate. Since the alert was triggered by me, this alert would be considered a False Positive alert:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/52217753-86c2-479c-a76d-d336b193780b)
+
+In Microsoft Defender for Cloud, there is a feature to check the security posture of the systems. It grades you depending on security controls implemented and recommends some to further increase security:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/08df282d-4383-4240-9771-b765d9d4941c)
+
+## Conclusion
+
+In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics Workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Although these attacks were conducted by me, it is crucial to understand the NIST 800-53 and NIST 800-61
 
 ## Architecture After Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
