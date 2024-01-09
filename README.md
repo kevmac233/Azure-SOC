@@ -11,8 +11,32 @@ In this project, I build a mini honeynet in Azure and ingest log sources from va
 - SecurityIncident (Incidents created by Sentinel)
 - AzureNetworkAnalytics_CL (Malicious Flows allowed into our honeynet)
 
-## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
+## Creating a Windows Virtual Machine with SQL Server Installation
+
+To begin this project, I created a Windows virtual machine in Azure with SQL Server installed:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/d461665b-7082-4f4f-94e0-7d8c721ac524)
+
+In Microsoft Azure, I configured the Network Security Group (NSG), which is the firewall built in Azure, by creating a rule to allow all inbound traffic:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/3bc5ddf5-1725-4618-a638-b0d70c58fb77)
+
+After creating the Windows VM, I used the RDP from my local desktop to get onto the VM. Once remoted in, I turned off Windows Defender Firewall to allow any traffic, making this VM vulnerable:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/7165d995-903c-4518-a827-2ee811b30f5d)
+
+The next step was to install the free trial version of SQL Server Evaluation and SQL Management Studio (SSMS). I configured the SQL Server to enable logging and added a "NETWORK SERVICE" permission in Registry Editor to provide full permission for the SQL Server service account:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/a69e66a0-b9ec-4ee8-95ee-55b39ae789db)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/3aedc271-6742-4a49-b4f3-9c3e01d86f28)
+
+To confirm that logging was enabled, I simulated a "failed" login attempt into the SQL Server and ported into Windows Event Viewer:
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/b5ddf696-c1ba-4c36-b980-38d73569382f)
+
+![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/b8d9a6a7-e66b-45b6-8959-7b018782947a)
+
 
 ## Architecture After Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
