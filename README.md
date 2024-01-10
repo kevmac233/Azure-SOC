@@ -136,6 +136,11 @@ In Microsoft Defender for Cloud, there is a feature to check the security postur
 
 ![image](https://github.com/kevmac233/Azure-SOC/assets/125979597/08df282d-4383-4240-9771-b765d9d4941c)
 
+Since all attacks were conducted by me, all security alerts would be considered as False Positives. However, in case of it being a real attack, some steps to take for containment and recovery would be to:
+  -Lock down the Network Security Group assigned to the virtual machine, either entirely, or to only allow necessary traffic
+  -Reset the affected user's password
+  -Enable Multi-Factor Authentication
+  
 ## Conclusion
 
 In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics Workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Although these attacks were conducted by me, it is crucial to understand security frameworks such as the NIST 800-53 and NIST 800-61 to implement security controls on systems and respond to incidents accordingly and manage risks.
