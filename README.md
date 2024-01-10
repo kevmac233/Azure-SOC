@@ -2,7 +2,7 @@
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to trigger alerts and create incidents. Virtual machines were created to simulate attacks such as brute force attacks and malware outbreak. When building a SOC and responding to security incidents, it is important to understand frameworks such as the NIST 800-61, 800-53, 800-61, etc., making sure the systems are in compliance with these frameworks. Below are the steps and procedures that I performed in this project.
+In this guided project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to trigger alerts and create incidents. Virtual machines were created to simulate attacks such as brute force attacks and malware outbreak. When building a SOC and responding to security incidents, it is important to understand frameworks such as the NIST 800-61, 800-53, 800-61, etc., making sure the systems are in compliance with these frameworks. Below are the steps and procedures that I performed in this project.
 
 ## Creating a Windows Virtual Machine with SQL Server Installation
 
