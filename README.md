@@ -1,8 +1,8 @@
-# Building a SOC + Honeynet in Azure
+# Building a SOC in Azure
 
 ## Introduction
 
-In this guided project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to trigger alerts and create incidents. Virtual machines were created to simulate attacks such as brute force attacks and malware outbreak. When building a SOC and responding to security incidents, it is important to understand frameworks such as the NIST 800-61, 800-53, 800-61, etc., making sure the systems are in compliance with these frameworks. Below are the steps and procedures that I performed in this project.
+In this guided project, I build a mini Security Operations Center (SOC) in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to trigger alerts and create incidents. Virtual machines were created to simulate attacks such as brute force attacks and malware outbreak. When building a SOC and responding to security incidents, it is important to understand frameworks such as the NIST 800-61, 800-53, 800-61, etc., making sure the systems are in compliance with these frameworks. Below are the steps and procedures that I performed in this project.
 
 ## Creating a Windows Virtual Machine with SQL Server Installation
 
@@ -143,4 +143,4 @@ Since all attacks were conducted by me, all security alerts would be considered 
   
 ## Conclusion
 
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics Workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Although these attacks were conducted by me, it is crucial to understand security frameworks such as the NIST 800-53 and NIST 800-61 to implement security controls on systems and respond to incidents accordingly and manage risks.
+In this project, a mini SOC was constructed in Microsoft Azure and log sources were integrated into a Log Analytics Workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Although these attacks were conducted by me, it is crucial to understand security frameworks such as the NIST 800-53 and NIST 800-61 to implement security controls on systems and respond to incidents accordingly and manage risks.
